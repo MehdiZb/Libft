@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzblah <Mehdi.Zblah@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/16 15:14:23 by mzblah            #+#    #+#             */
-/*   Updated: 2024/09/16 15:14:23 by mzblah           ###   ########.fr       */
+/*   Created: 2024/09/16 09:09:33 by mzblah            #+#    #+#             */
+/*   Updated: 2024/09/16 09:09:33 by mzblah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <ctype.h>
-# include <stdio.h>
-# include <stdlib.h>
-
-/* Libc functions */
-
-int	ft_isalpha(int c);
-int	ft_isdigit(int c);
-int	ft_isalnum(int c);
-int	ft_isascii(int c);
-int	ft_isprint(int c);
-
-size_t	ft_strlen(const char *str);
-
-void	*ft_memset(void *s, int c, size_t n);
-
-#endif
+int	ft_isalnum(int c)
+{
+	if (ft_isalpha(c) || ft_isdigit(c))
+		return (1);
+	return (0);
+}
