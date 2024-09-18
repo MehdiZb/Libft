@@ -6,11 +6,13 @@
 /*   By: mzblah <Mehdi.Zblah@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:43:03 by mzblah            #+#    #+#             */
-/*   Updated: 2024/09/18 09:25:59 by mzblah           ###   ########.fr       */
+/*   Updated: 2024/09/18 17:09:38 by mzblah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+# include "string.h"
+
 
 int main(int argc, char** argv)
 {
@@ -58,28 +60,64 @@ int main(int argc, char** argv)
 	}
 	printf("ft_isalpha, ft_isdigit, ft_isalnum, ft_isascii, ft_isprint - Testing done\n");
 
-	if(ft_strlen(0) != 0)
-		printf("strlen(0) pas correct");
-	if(ft_strlen("") != 0)
-		printf("strlen(\"\") pas correct");
-	if(ft_strlen("12345") != 5)
-		printf("strlen(\"\") pas correct");
+
+	if(ft_strlen(0))
+		printf("ft_strlen - incorrect\n");
+	if(ft_strlen("A") != 1)
+		printf("ft_strlen - incorrect\n");
+	if(ft_strlen("A01") != 3)
+		printf("ft_strlen - incorrect\n");
+	if(ft_strlen(""))
+		printf("ft_strlen - incorrect\n");
 	printf("ft_strlen - Testing done\n");
 
-
-
-	ft_memset(0, 1, 150000);
 	char *str = (char*)malloc(4);
 	if (!str)
 		return (1);
 	str[3] = 0;
-	// ft_memset(str, 0, 150000); //segfault
+	ft_memset(0, 1, 15000000);
 	ft_memset(str, 'A', 3);
-	printf("%s\n", str);
-	ft_memset(str, '0', 0);
-	printf("%s\n", str);
-	ft_memset(str, '0', 3);
-	printf("%s\n", str);
+	if (strcmp("AAA", str))
+		printf("ft_memset incorrect - 1\n");
+	ft_memset(0, 'A', 3);
+	if (strcmp("AAA", str))
+		printf("ft_memset incorrect - 2\n");
+	ft_memset(str, 0, 3);
+	if (strcmp("", str))
+		printf("ft_memset incorrect - 3\n");
+	free(str);
 	printf("ft_memset - Testing done\n");
+
+	str = (char *)malloc(31);
+	if (!str)
+		return (1);
+	ft_memset(str, 'A', 30);
+	ft_bzero(str, 31);
+	if (strcmp("", str))
+		printf("ft_bzero incorrect\n");
+	free(str);
+	printf("ft_bzero - Testing done\n");
+	
+	str = (char *)malloc(5);
+	if (!str)
+		return (1);
+	str[0] = '0';
+	str[1] = '1';
+	str[2] = '2';
+	str[3] = '3';
+	str[4] = 0;
+	printf("%s\n", str);
+	ft_memcpy(str + 1, str, 4);
+	printf("%s\n", str);
+
+		str[0] = '0';
+	str[1] = '1';
+	str[2] = '2';
+	str[3] = '3';
+	str[4] = 0;
+	printf("%s\n", str);
+	memcpy(str + 1, str, 4);
+	printf("%s\n", str);
+	free(str);
 	return(0);
 }

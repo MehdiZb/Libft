@@ -6,7 +6,7 @@
 #    By: mzblah <Mehdi.Zblah@gmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/22 14:40:05 by Mzblah            #+#    #+#              #
-#    Updated: 2024/09/17 16:21:43 by mzblah           ###   ########.fr        #
+#    Updated: 2024/09/18 16:36:22 by mzblah           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,9 @@ SRCS =	$(SRC_DIR)ft_isalpha.c	\
 		$(SRC_DIR)ft_isascii.c	\
 		$(SRC_DIR)ft_isprint.c	\
 		$(SRC_DIR)ft_strlen.c	\
-		$(SRC_DIR)ft_memset.c
+		$(SRC_DIR)ft_memset.c	\
+		$(SRC_DIR)ft_bzero.c	\
+		$(SRC_DIR)ft_memcpy.c	
 
 OBJS = $(SRCS:.c=.o)
 
