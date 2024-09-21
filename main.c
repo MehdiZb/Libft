@@ -6,12 +6,13 @@
 /*   By: mzblah <Mehdi.Zblah@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:43:03 by mzblah            #+#    #+#             */
-/*   Updated: 2024/09/18 17:09:38 by mzblah           ###   ########.fr       */
+/*   Updated: 2024/09/21 16:20:58 by mzblah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-# include "string.h"
+# include <string.h>
+# include <bsd/string.h>
 
 
 int main(int argc, char** argv)
@@ -98,26 +99,62 @@ int main(int argc, char** argv)
 	free(str);
 	printf("ft_bzero - Testing done\n");
 	
-	str = (char *)malloc(5);
+	
+	
+	
+	
+	str = (char *)malloc(20);
 	if (!str)
 		return (1);
-	str[0] = '0';
-	str[1] = '1';
-	str[2] = '2';
-	str[3] = '3';
-	str[4] = 0;
-	printf("%s\n", str);
-	ft_memcpy(str + 1, str, 4);
-	printf("%s\n", str);
-
-		str[0] = '0';
-	str[1] = '1';
-	str[2] = '2';
-	str[3] = '3';
-	str[4] = 0;
-	printf("%s\n", str);
-	memcpy(str + 1, str, 4);
-	printf("%s\n", str);
+	for (int i = 0; i < 20; i++)
+		str[i] = i + 65;
+	str[20] = 0;
+	char	*str2 = (char*)strdup(str);
+	int tst = strlcpy(str + 18, (const char*)(str + 15), 0);
+	int test2 = ft_strlcpy(str2 + 18, (const char*)(str2 + 15), 0);
+	if ((tst != test2) || strcmp(str, str2))
+		printf("ft_strlcpy INCORRECT, strlcpy = %d ft_strlcpy = %d\n", tst, test2);
 	free(str);
+	free(str2);
+
+	str = (char *)malloc(20);
+	if (!str)
+		return (1);
+	for (int i = 0; i < 20; i++)
+		str[i] = i + 65;
+	str[20] = 0;
+	str2 = (char*)strdup(str);
+	tst = strlcpy(str + 6, (const char*)(str + 8), 5);
+	test2 = ft_strlcpy(str2 + 6, (const char*)(str2 + 8), 5);
+	if ((tst != test2) || strcmp(str, str2))
+		printf("ft_strlcpy incorrect, strlcpy = %d ft_strlcpy = %d\n", tst, test2);
+	free(str);
+	free(str2);
+
+	str = (char *)malloc(20);
+	if (!str)
+		return (1);
+	for (int i = 0; i < 20; i++)
+		str[i] = i + 65;
+	str[20] = 0;
+	str2 = (char*)strdup(str);
+	printf("%s\n", str);
+	tst = strlcat(str + 10, (const char*)(str), 19);
+	printf("%s\n", str);
+	// test2 = ft_strlcpy(str2 + 6, (const char*)(str2 + 8), 5);
+	if ((tst != test2) || strcmp(str, str2))
+		printf("ft_strlcpy incorrect, strlcpy = %d ft_strlcpy = %d\n", tst, test2);
+	free(str);
+	free(str2);
+
+	// 	str[0] = '0';
+	// str[1] = '1';
+	// str[2] = '2';
+	// str[3] = '3';
+	// str[4] = 0;
+	// printf("%s\n", str);
+	// memcpy(str, str + 2, 2);
+	// printf("%s\n", str);
+	// free(str);
 	return(0);
 }
