@@ -6,7 +6,7 @@
 /*   By: mzblah <Mehdi.Zblah@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:43:03 by mzblah            #+#    #+#             */
-/*   Updated: 2024/09/21 16:20:58 by mzblah           ###   ########.fr       */
+/*   Updated: 2024/09/22 15:58:43 by mzblah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,22 +131,18 @@ int main(int argc, char** argv)
 	free(str);
 	free(str2);
 
-	str = (char *)malloc(20);
-	if (!str)
-		return (1);
-	for (int i = 0; i < 20; i++)
-		str[i] = i + 65;
-	str[20] = 0;
-	str2 = (char*)strdup(str);
-	printf("%s\n", str);
-	tst = strlcat(str + 10, (const char*)(str), 19);
-	printf("%s\n", str);
+	str = (char*)strdup("ABCDEFGHIJ");
+	str2 = (char*)strdup("0123456789");
+	printf("%s\n", str2);
+	tst = strlcat(str2, (const char*)(str), 15);
+	printf("%s\n", str2);
 	// test2 = ft_strlcpy(str2 + 6, (const char*)(str2 + 8), 5);
 	if ((tst != test2) || strcmp(str, str2))
 		printf("ft_strlcpy incorrect, strlcpy = %d ft_strlcpy = %d\n", tst, test2);
 	free(str);
 	free(str2);
 
+	printf("%d %d %d", 'a', 'A', 'a' - 'A');
 	// 	str[0] = '0';
 	// str[1] = '1';
 	// str[2] = '2';
